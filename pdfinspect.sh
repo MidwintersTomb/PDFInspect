@@ -1,0 +1,86 @@
+#!/bin/bash
+
+# PDF Inspect
+# Created by MidwintersTomb
+# Version 1.0
+# August 31, 2020
+
+if [ "$1" == "" ]
+then
+echo "Please enter a filename"
+echo "Syntax: ./pdfinspect.sh /path/to/filename"
+
+else
+
+echo "$@" >> "$@"" - Results.txt"
+echo "==================================" >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+#CAT Check
+echo "CAT:" >> "$@"" - Results.txt"
+echo "----------------------------------" >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+echo "Embedded Javascript:" >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+cat "$@" | grep /JS >> "$@"" - Results.txt"
+cat "$@" | grep /JavaScript >> "$@"" - Results.txt"
+cat "$@" | grep /MacroForm >> "$@"" - Results.txt"
+cat "$@" | grep /XFA >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+echo "Embedded Flash:" >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+cat "$@" | grep /RichMedia >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+echo "Launching:" >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+cat "$@" | grep /AA >> "$@"" - Results.txt"
+cat "$@" | grep /Launch >> "$@"" - Results.txt"
+cat "$@" | grep /OpenAction >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+echo "Internet Access:" >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+cat "$@" | grep /URI >> "$@"" - Results.txt"
+cat "$@" | grep /SubmitForm >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+echo "Embedded File:" >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+cat "$@" | grep /EmbeddedFiles >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+echo "Others:" >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+cat "$@" | grep /Goto >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+
+#STRINGS Check
+echo "STRINGS:" >> "$@"" - Results.txt"
+echo "----------------------------------" >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+echo "Embedded Javascript:" >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+strings "$@" | grep /JS >> "$@"" - Results.txt"
+strings "$@" | grep /JavaScript >> "$@"" - Results.txt"
+strings "$@" | grep /MacroForm >> "$@"" - Results.txt"
+strings "$@" | grep /XFA >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+echo "Embedded Flash:" >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+strings "$@" | grep /RichMedia >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+echo "Launching:" >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+strings "$@" | grep /AA >> "$@"" - Results.txt"
+strings "$@" | grep /Launch >> "$@"" - Results.txt"
+strings "$@" | grep /OpenAction >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+echo "Internet Access:" >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+strings "$@" | grep /URI >> "$@"" - Results.txt"
+strings "$@" | grep /SubmitForm >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+echo "Embedded File:" >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+strings "$@" | grep /EmbeddedFiles >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+echo "Others:" >> "$@"" - Results.txt"
+echo "" >> "$@"" - Results.txt"
+strings "$@" | grep /Goto >> "$@"" - Results.txt"
+fi
